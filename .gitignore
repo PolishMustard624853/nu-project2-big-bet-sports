@@ -1,0 +1,14 @@
+# mac system files
+.DS_Store
+._*
+# windows system files
+desktop.ini
+thumbs.db
+# vscode settings
+.vscode/
+# development files/folders
+/_homework*/
+/_tmp/
+.env
+# node
+node_modules/
