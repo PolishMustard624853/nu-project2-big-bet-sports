@@ -1,13 +1,23 @@
 const User = require('./User');
-const Project = require('./Project');
+const Match = require('./Match');
+const Bet = require('./Bet');
+const League = require('./League');
 
-User.hasMany(Project, {
+User.hasMany(Bet, {
   foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+  onDelete: 'SET NULL'
 });
 
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
+Bet.belongsTo(User);
+Match.hasMany(Bet, {
+  foreignKey: 'match_id',
 });
 
-module.exports = { User, Project };
+Bet.belongsTo(Match);
+League.hasMany(Match, {
+  foreignKey: 'league_id',
+});
+
+Match.belongsTo(League);
+
+module.exports = {User, Bet, Match, League};
