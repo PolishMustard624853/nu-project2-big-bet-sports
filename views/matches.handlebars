@@ -3,21 +3,8 @@
 <div class="row mb-4 match">
   <div class="col-md-5">
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}}
-      <a href="/match/{{match.id}}">{{match.name}}</a>
+      <a href="/match/{{match.id}}">{{away_team}} at {{home_team}}</a>
     </h2>
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount match.needed_funding}}</span>
-      needed!
-    </p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{match.description}}
-    </p>
   </div>
 </div>
 {{/each}}

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
+  <title>Big Bet Sports</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -13,16 +13,16 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
+        {{!-- <span role="img" aria-label="money">💸</span> --}}
+        <a href="/">Big Bet Sports Club</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/dashboard">Home</a> |
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
@@ -37,7 +37,7 @@
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="/public/js/logout.js"></script>
   {{/if}}
 </body>
 
