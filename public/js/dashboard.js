@@ -1,11 +1,11 @@
 // const updateButtons = document.querySelectorAll(".update")
 // for (let i = 0; i < delButtons.length; i++) {
-  //   delButtons[i].addEventListener("click", delButtonHandler)
-  // }
-  // for (let i = 0; i < delButtons.length; i++) {
-    //   updateButtons[i].addEventListener("click", UpdateHandler)
-    // }
-    // const delButtons =  document.querySelectorAll(".delete")
+//   delButtons[i].addEventListener("click", delButtonHandler)
+// }
+// for (let i = 0; i < delButtons.length; i++) {
+//   updateButtons[i].addEventListener("click", UpdateHandler)
+// }
+// const delButtons =  document.querySelectorAll(".delete")
 const delButtonHandler = async (event) => {
 
   if (event.target.hasAttribute('data-id')) {
