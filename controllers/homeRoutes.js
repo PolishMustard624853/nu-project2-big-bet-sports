@@ -1,48 +1,56 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { User, League, Match, Bet } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    // Get all leagues
+    const leagueData = await League.findAll();
 
-    // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    // Serialize league data so the template can read it
+    const leagues = leagueData.map((league) => league.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('leagues', {
-      projects,
-      logged_in: req.session.logged_in
+      leagues,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/league/:id', withAuth, async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const matchesData = await League.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ['name'],
+          model: Match,
         },
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const matches = matchesData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
-      logged_in: req.session.logged_in
+    res.render('matches', {
+      ...matches,
+      // matches,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/match/:id', withAuth, async (req, res) => {
+  try {
+    const matchData = await Match.findByPk(req.params.id);
+
+    const match = matchData.get({ plain: true });
+    console.log(match);
+    res.render('match', {
+      ...match,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -54,18 +62,28 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
+      // raw: true,
+      // nest: true,
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      // add in match and league?
+      include: [
+        {
+          model: Bet,
+          include: [{ model: Match }],
+        },
+      ],
     });
 
     const user = userData.get({ plain: true });
+    console.log(user);
 
     res.render('dashboard', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.status(500).json(err.message);
   }
 });
 
