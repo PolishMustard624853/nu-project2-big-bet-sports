@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('leagues', {
       leagues,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -33,9 +33,24 @@ router.get('/league/:id', withAuth, async (req, res) => {
     const matches = matchesData.get({ plain: true });
 
     res.render('matches', {
-      // ...matches,
-      matches,
-      logged_in: req.session.logged_in
+      ...matches,
+      // matches,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/match/:id', withAuth, async (req, res) => {
+  try {
+    const matchData = await Match.findByPk(req.params.id);
+
+    const match = matchData.get({ plain: true });
+    console.log(match);
+    res.render('match', {
+      ...match,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -47,19 +62,28 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
+      // raw: true,
+      // nest: true,
       attributes: { exclude: ['password'] },
       // add in match and league?
-      include: [{ model: Bet, model: Match }],
+      include: [
+        {
+          model: Bet,
+          include: [{ model: Match }],
+        },
+      ],
     });
 
     const user = userData.get({ plain: true });
+    console.log(user);
 
     res.render('dashboard', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.status(500).json(err.message);
   }
 });
 

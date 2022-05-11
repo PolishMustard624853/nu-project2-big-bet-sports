@@ -1,0 +1,32 @@
+[
+  {
+    "match_id": 1,
+    "choice": true,
+    "user_id": 1
+  },
+  {
+    "match_id": 1,
+    "choice": true,
+    "user_id": 2
+  },
+  {
+    "match_id": 1,
+    "choice": true,
+    "user_id": 3
+  },
+  {
+    "match_id": 2,
+    "choice": true,
+    "user_id": 1
+  },
+  {
+    "match_id": 2,
+    "choice": true,
+    "user_id": 2
+  },
+  {
+    "match_id": 2,
+    "choice": true,
+    "user_id": 3
+  }
+]
