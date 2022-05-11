@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { Bet, User, League, Match} = require('../models');
+const { Bet, User, League, Match } = require('../models');
 
 const userData = require('./userData.json');
 const matchData = require('./matchData.json');
@@ -9,9 +9,11 @@ const betData = require('./betData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await User.bulkCreate(userData, {
-    returning: true,
-  });
+  for (let i = 0; i < userData.length; i++) {
+    const user = userData[i];
+    await User.create(user);
+  }
+
   await League.bulkCreate(leagueData, {
     returning: true,
   });
