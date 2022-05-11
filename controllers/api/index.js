@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const userRoutes = require('./userRoutes');
-const matchRoutes = require('./matchRoutes');
+const betRoutes = require('./betRoutes');
 
 router.use('/users', userRoutes);
-router.use('/matches', matchRoutes);
+router.use('/bet', betRoutes);
 
 module.exports = router;
