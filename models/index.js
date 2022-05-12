@@ -1,29 +1,12 @@
-const User = require('./User');
-const Match = require('./Match');
-const Bet = require('./Bet');
-const League = require('./League');
+const glob = require('glob');
 
-User.hasMany(Bet, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
+const model = {};
 
-Bet.belongsTo(User, {
-  foreignKey: 'user_id',
-});
-Match.hasMany(Bet, {
-  foreignKey: 'match_id',
+const files = glob.sync('./models/*.js', { ignore: "./models/index.js" });
+files.forEach(file => {
+  let key = file.match(/[A-Z][a-zA-Z]+/);
+  this[key[0]] = require(`./${key[0]}`);
+  model[key[0]] = this[key[0]];
 });
 
-Bet.belongsTo(Match, {
-  foreignKey: 'match_id',
-});
-League.hasMany(Match, {
-  foreignKey: 'league_id',
-});
-
-Match.belongsTo(League, {
-  foreignKey: 'league_id',
-});
-
-module.exports = {User, Bet, Match, League};
+module.exports = model;

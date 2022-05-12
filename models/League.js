@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Match = require('./Match')
 
 class League extends Model { }
 
@@ -24,5 +25,13 @@ League.init(
     modelName: 'leagues',
   }
 );
+
+League.hasMany(Match, {
+  foreignKey: 'league_id',
+});
+
+Match.belongsTo(League, {
+  foreignKey: 'league_id',
+});
 
 module.exports = League;
