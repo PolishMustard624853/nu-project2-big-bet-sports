@@ -1,26 +1,26 @@
-<div class='row'>
-  <div class='col-auto'>
+<div class="row">
+  <div class="col-auto">
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
 
-<div class='row mt-4'>
+<div class="row mt-4">
 
   {{#if bets.length}}
-  <div class='col-md-6 bet-list'>
+  <div class="col-md-6 bet-list" class="black-text">
     <h3>Current Bets:</h3>
 
     {{#each bets as |bet|}}
-      <div class='row mb-2'>
-        <div class='col-md-8'>
-          <h4><a href='/match/{{bet.match_id}}'>{{bet.match.away_team}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <h4><a href="/match/{{bet.match_id}}">{{bet.match.away_team}}
               at
               {{bet.match.home_team}}</a></h4>
         </div>
-        <div class='col-md-4'>
+        <div class="col-md-4">
           <button
-            class='btn btn-sm btn-danger'
-            data-id='{{bet.id}}'
+            class="btn btn-sm btn-danger"
+            data-id="{{bet.id}}"
           >DELETE</button>
         </div>
       </div>
@@ -29,4 +29,4 @@
   {{/if}}
 </div>
 
-<script src='./js/dashboard.js'></script>
+<script src="./js/dashboard.js"></script>
