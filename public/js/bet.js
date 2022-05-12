@@ -45,3 +45,9 @@ document.querySelectorAll('.team-button').forEach((element) => {
 document
   .querySelector('#save-bet-button')
   .addEventListener('click', saveButtonHandler);
+
+document
+  .querySelector('#cancel-bet-button')
+  .addEventListener('click', function goBack() {
+    history.back()
+  });
