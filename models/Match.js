@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Bet = require('./Bet')
 
 class Match extends Model {}
 
@@ -36,5 +37,13 @@ Match.init(
     modelName: 'matches',
   }
 );
+
+Match.hasMany(Bet, {
+  foreignKey: 'match_id',
+});
+
+Bet.belongsTo(Match, {
+  foreignKey: 'match_id',
+});
 
 module.exports = Match;
