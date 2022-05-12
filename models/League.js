@@ -25,13 +25,4 @@ League.init(
   }
 );
 
-  function myFunction() {
-    if (confirm("Are you sure you wish to cancel this configuration?")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-
 module.exports = League;
