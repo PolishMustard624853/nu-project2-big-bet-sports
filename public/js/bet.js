@@ -49,5 +49,5 @@ document
 document
   .querySelector('#cancel-bet-button')
   .addEventListener('click', function goBack() {
-    history.back()
+    history.back();
   });
