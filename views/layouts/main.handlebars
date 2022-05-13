@@ -5,38 +5,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Big Bet Sports</title>
-  <link rel="icon" type="image/x-icon" href="/images/money-money-money.jpg">
     <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/android-chrome-192x192.png" />
 </head>
 
 <body>
   <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Big Bet Sports Club</a>
+    <div class="nav-wrapper cyan darken-3">
+      <a href="/" class="brand-logo">Big Bet Sports Club</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <li><a href="/dashboard">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/" id="logout">Logout</a></li>
         {{else}}
         <li><a href="/login">Login</a></li>
         {{/if}}
       </ul>
     </div>
-      </nav>
+  </nav>
     
     </header>
-    <main class="card-panel cyan darken-2">
-        <div class="card-panel cyan darken-4">
+    <main class="card-panel teal lighten-1">
+        <div class="card-panel teal darken-2">
       <!-- Render the sub layout -->
       {{{ body }}}
       </div>
     </main>
     <footer>
-          <footer class="page-footer red lighten-2">
+          <footer class="page-footer cyan darken-3 center-align">
           <div class="footer-copyright">
             <div class="container">
             © 2022 Copyright
