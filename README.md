@@ -68,9 +68,7 @@
 
 ## About the Project
 
-<div align="center">
-    <a href="https://nu-project2-big-bet-sports.herokuapp.com/"><img style="width: 75%;" src="./assets/readme/full-page-screenshot.png" /></a>
-</div>
+<video src="https://user-images.githubusercontent.com/692914/168331408-ea14b3d4-7943-450f-bb9c-afb69fe2d41f.mp4" style="width:100%"></video>
 
 This repository creates a betting app allowing users to login, choose a league, and then bet for the home or away team.
 
