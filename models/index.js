@@ -4,7 +4,7 @@ const model = {};
 
 // glob.sync changes glob function from asynchronous to synchronous
 // find files in models folder that end in .js except index.js
-const files = glob.sync('./models/*.js', { ignore: "./models/index.js" });
+const files = glob.sync('./models/*.js', { ignore: './models/index.js' });
 files.forEach(file => {
   // grab file name for each file grabbed using regex
   let key = file.match(/[A-Z][a-zA-Z]+/);
