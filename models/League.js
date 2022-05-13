@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const Match = require('./Match')
+const Match = require('./Match');
 
 class League extends Model { }
 

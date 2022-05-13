@@ -1,28 +1,40 @@
-<div class='text-center'>
-  <h2>{{away_team}} at {{home_team}}</h2>
-  {{!-- <p>{{{get_emoji}}}</p> --}}
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card teal lighten-2">
+        <div class="card-content teal lighten-2 z-depth-5">
+            <h2>{{away_team}} at {{home_team}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div
-    class='btn btn-primary team-button'
+    class='btn btn-primary team-button  cyan darken-1 black-text z-depth-3'
     type='submit'
     data-team='true'
   >{{home_team}}</div>
   <div
-    class='btn btn-primary team-button'
+    class='btn btn-primary team-button cyan darken-1 black-text z-depth-3'
     type='submit'
     data-team='false'
   >{{away_team}}</div>
-  <div><p id='bet-choice'>Pick a team to win!</p></div>
-  <button
+<div><p id='bet-choice'>
+  <h5>Pick a team to win!</h5>
+  </p></div>
+  <div class="modal-footer">
+ <button
     type='button'
-    class='btn btn-secondary'
+    class='btn btn-secondary red lighten-2 z-depth-3'
     data-dismiss='modal'
     id='cancel-bet-button'
   >Cancel</button>
   <button
     type='button'
-    class='btn btn-primary'
+    class='btn btn-primary cyan darken-1 black-text z-depth-3'
     id='save-bet-button'
   >Save</button>
+  </div>
 </div>
 
 
