@@ -1,6 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const Bet = require('./Bet')
+
+
 class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
@@ -53,5 +56,14 @@ User.init(
     modelName: 'users',
   }
 );
+
+User.hasMany(Bet, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+Bet.belongsTo(User, {
+  foreignKey: 'user_id',
+});
 
 module.exports = User;
