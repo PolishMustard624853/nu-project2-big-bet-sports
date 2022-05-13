@@ -1,35 +1,43 @@
-
-    <div class="card-panel teal lighten-2 z-depth-5 center-align">
-      <h2>Welcome, {{name}}!</h2>
-      </div>
-  </div>
+<div class='card-panel teal lighten-2 z-depth-5 center-align'>
+  <h2>Welcome, {{name}}!</h2>
 </div>
 
-{{!-- <div class="row mt-4"> --}}
-<div class="card-panel teal darken-2 z-depth-5">
+<div class='card-panel teal darken-2 z-depth-5'>
   {{#if bets.length}}
-<div class="card-panel teal lighten-2 z-depth-1">
-    <h3>Current Bets:</h3>
-  </div>
-<div class="bet-list teal lighten-2">
-    {{#each bets as |bet|}}
-      <div class="row mb-2 z-depth-3">
-        <div class="col-md-8">
-          <h4><a href="/match/{{bet.match_id}}" class="black-text">{{bet.match.away_team}}
-              at
-              {{bet.match.home_team}}</a></h4>
+    <div class='card-panel teal lighten-2 z-depth-1'>
+      <h3>Current Bets:</h3>
+    </div>
+    <div class='bet-list teal lighten-2'>
+      {{#each bets as |bet|}}
+        <div class='row mb-2 z-depth-3'>
+          <div class='col-md-8'>
+            <h4>
+              {{#if bet.choice}}
+                <a
+                  href='/match/{{bet.match_id}}'
+                  class='black-text'
+                >{{bet.match.away_team}}
+                  at
+                  <span class='purple-text'>{{bet.match.home_team}}</span></a>
+              {{else}}
+                <a href='/match/{{bet.match_id}}' class='black-text'><span
+                    class='purple-text'
+                  >{{bet.match.away_team}}</span>
+                  at
+                  {{bet.match.home_team}}</a>
+              {{/if}}
+            </h4>
+          </div>
+          <div class='col-md-4'>
+            <button
+              class='btn btn-sm btn-danger red lighten-2 z-depth-3'
+              data-id='{{bet.id}}'
+            >DELETE</button>
+          </div>
         </div>
-        <div class="col-md-4">
-          <button
-            class="btn btn-sm btn-danger red lighten-2 z-depth-3"
-            data-id="{{bet.id}}"
-          >DELETE</button>
-        </div>
-      </div>
-    {{/each}}
-  </div>
+      {{/each}}
+    </div>
   {{/if}}
 </div>
-</div>
 
-<script src="./js/dashboard.js"></script>
+<script src='./js/dashboard.js'></script>
